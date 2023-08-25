@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const URL = 'http://localhost:8000/api/events-forms';
+const URL = 'https://zermapp.jobtrek.ch/api/get-events';
 
 let titre = ref('');
 let orateur = ref('');

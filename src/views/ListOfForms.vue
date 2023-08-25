@@ -22,7 +22,7 @@ onMounted(() => {
 <template>
   <div class="cards">
     <div v-for="event in events" :key="event.id" class="card">
-    <h1>{{event.title}}</h1>
+      <h1>{{event.title}}</h1>
     </div>
   </div>
 </template>
