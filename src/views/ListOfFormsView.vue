@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import {RouterLink, useRouter} from "vue-router";
 
-
+const router = useRouter();
 const URL = 'https://zermapp.jobtrek.ch/api/get-events';
 
 let events = ref([]);
@@ -20,14 +21,27 @@ onMounted(() => {
 </script>
 
 <template>
+  <button class="btn">Button</button>
+  <h1>Inscrivez-vous aux différents séminaires ! </h1>
   <div class="cards">
-    <div v-for="event in events" :key="event.id" class="card">
+    <div
+        v-for="event in events"
+        :key="event.id"
+        class="card"
+        @click="router.push(`/form/${event.id}`)"
+    >
       <h1>{{event.title}}</h1>
     </div>
   </div>
 </template>
 
 <style scoped>
+
+h1 {
+  text-align: center;
+  font-size: 45px;
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +49,7 @@ onMounted(() => {
 }
 
 .card {
+  cursor:pointer;
   background-color: white;
   text-align: center;
   margin: 10px;

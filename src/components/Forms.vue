@@ -1,5 +1,11 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeMount } from 'vue';
+import {useRoute} from "vue-router";
+
+const route = useRoute()
+
+const {id} = route.params
+const form = ref(null)
 
 const URL = 'https://zermapp.jobtrek.ch/api/get-events';
 
@@ -12,7 +18,6 @@ let date = ref('');
 let heure_debut = ref('');
 let heure_fin = ref('');
 let places_disponibles = ref('');
-
 async function logEvents(){
   const response = await fetch(URL);
   const events = await response.json();
@@ -27,11 +32,17 @@ async function logEvents(){
   heure_debut.value = event.time_of_event_beginning;
   heure_fin.value = event.time_of_event_end;
   places_disponibles.value = event.available_place;
+
 }
 
 onMounted(() => {
   logEvents(); //
 });
+
+onBeforeMount(() => {
+  const eventData = events.find(c => c.id === id)
+})
+
 </script>
 
 <template>
@@ -46,7 +57,7 @@ onMounted(() => {
       <h2 class="center"> ⬇️ Cliquez sur le bouton pour vous inscrire ⬇️ </h2>
     </div>
     <div id="forms">
-        <button>S'inscrire au séminaire</button>
+      <button>S'inscrire au séminaire</button>
     </div>
   </div>
 

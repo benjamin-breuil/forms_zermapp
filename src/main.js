@@ -12,10 +12,3 @@ app.use(router)
 
 app.mount('#app')
 
-const routes = [
-    {path: '/', component: HelloWorld},
-    {
-        path: 'forms/:id',
-        component: Forms
-    }
-]
