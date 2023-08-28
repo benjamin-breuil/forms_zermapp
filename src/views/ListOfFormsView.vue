@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import {RouterLink, useRouter} from "vue-router";
 
 const router = useRouter();
-const URL = 'http://zermapp.jobtrek.ch/api/get-events';
+const URL = 'https://zermapp.jobtrek.ch/api/get-events';
 
 let events = ref([]);
 
@@ -25,22 +25,23 @@ onMounted(() => {
 
 
 
-  <div id="cards"
-      v-for="event in events"
-      :key="event.id"
-
-      class="card w-96 bg-base-100 shadow-xl">
+  <div id="cards">
     <div
-        class="card-body">
-      <h2 class="card-title">{{ event.title }}</h2>
-      <p>{{ event.description }}</p>
-      <div class="card-actions justify-end">
-        <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary" v-if="event.available_place > 1">Il reste {{ event.available_place }} places disponible</button>
-        <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary" v-else-if="event.available_place === 1">Il reste {{ event.available_place }} place disponible</button>
-        <button class="btn btn-primary cursor-not-allowed" v-else>Il n'y a plus de place disponible</button>
+        v-for="event in events"
+        :key="event.id"
+        class="card w-96 bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">{{ event.title }}</h2>
+        <p>{{ event.description }}</p>
+        <div class="card-actions justify-end">
+          <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary" v-if="event.available_place > 1">Il reste {{ event.available_place }} places disponibles</button>
+          <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary" v-else-if="event.available_place === 1">Il reste {{ event.available_place }} place disponible</button>
+          <button class="btn btn-primary cursor-not-allowed" v-else>Il n'y a plus de place disponible</button>
+        </div>
       </div>
     </div>
   </div>
+
 
 
 
@@ -55,6 +56,9 @@ h1 {
 }
 
 #cards {
-  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap:20px;
 }
+
 </style>
