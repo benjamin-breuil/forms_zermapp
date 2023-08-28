@@ -7,7 +7,7 @@ const route = useRoute()
 const {id} = route.params
 const event = ref(null)
 
-const URL = 'https://zermapp.jobtrek.ch/api/get-events';
+const URL = 'http://localhost:8000/api/get-events';
 
 let titre = ref('');
 let orateur = ref('');
@@ -58,7 +58,8 @@ onMounted(() => {
       <h2 class="center"> ⬇️ Cliquez sur le bouton pour vous inscrire ⬇️ </h2>
     </div>
     <div id="forms">
-      <button>S'inscrire au séminaire</button>
+      <button class="buttonif"  v-if="places_disponibles !== 0">S'inscrire au séminaire</button>
+      <button style="cursor: not-allowed" v-else>Il n'y a plus de place disponible</button>
     </div>
   </div>
 
@@ -117,7 +118,7 @@ button:hover {
   background-color: #005abb;
 }
 
-button:active {
+.buttonif:active {
   background-color: #007bff;
 }
 
