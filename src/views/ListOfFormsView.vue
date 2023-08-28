@@ -55,10 +55,17 @@ h1 {
   text-align: center;
 }
 
+
+
 #cards {
   display: flex;
   flex-wrap: wrap;
   gap:20px;
+}
+
+#cards > div {
+  margin: 0 auto;
+
 }
 
 </style>

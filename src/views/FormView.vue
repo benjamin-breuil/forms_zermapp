@@ -33,7 +33,7 @@ async function logEvents(){
   heure_debut.value = event.value.time_of_event_beginning
   heure_fin.value = event.value.time_of_event_end
   places_disponibles.value = event.value.available_place
-
+  date.value = event.value.date_of_event
   console.log(event.value.id)
 }
 
@@ -54,7 +54,7 @@ onMounted(() => {
       <p>{{ description }}</p>
       <p>Lieu : {{ site }}, {{ salle }} 📍 </p>
       <p>Le séminaire est prévu pour le {{ date }} de {{ heure_debut }} à {{ heure_fin }}</p>
-      <h2>Nombre de places disponibles : {{ places_disponibles }}  </h2>
+      <p >Nombre de places disponibles : {{ places_disponibles }}  </p>
       <h2 class="center"> ⬇️ Cliquez sur le bouton pour vous inscrire ⬇️ </h2>
     </div>
     <div id="forms">
@@ -134,6 +134,10 @@ button:active {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 30px;
 }
 
 @media only screen and (max-width: 500px) {
