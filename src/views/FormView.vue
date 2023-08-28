@@ -7,7 +7,7 @@ const route = useRoute()
 const {id} = route.params
 const event = ref(null)
 
-const URL = 'http://localhost:8000/api/get-events';
+const URL = 'https://zermapp.jobtrek.ch/api/get-events';
 
 let titre = ref('');
 let orateur = ref('');
