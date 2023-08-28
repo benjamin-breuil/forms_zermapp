@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import {RouterLink, useRouter} from "vue-router";
 
 const router = useRouter();
-const URL = 'https://zermapp.jobtrek.ch/api/get-events';
+const URL = 'http://localhost:8000/api/get-events';
 
 let events = ref([]);
 
@@ -20,45 +20,35 @@ onMounted(() => {
 
 </script>
 
-<template>
-  <button class="btn">Button</button>
+<template >
   <h1>Inscrivez-vous aux différents séminaires ! </h1>
-  <div class="cards">
+
+
+
+  <div id="cards"
+      v-for="event in events"
+      :key="event.id"
+
+      class="card w-96 bg-base-100 shadow-xl cursor-not-allowed">
     <div
-        v-for="event in events"
-        :key="event.id"
-        class="card"
-        @click="router.push(`/form/${event.id}`)"
-    >
-      <h1>{{event.title}}</h1>
+        class="card-body">
+      <h2 class="card-title">{{ event.title }}</h2>
+      <p>{{ event.description }}</p>
+      <div class="card-actions justify-end">
+        <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary" v-if="event.available_place > 1">Il reste {{ event.available_place }} places disponible</button>
+        <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary" v-else-if="event.available_place === 1">Il reste {{ event.available_place }} place disponible</button>
+        <button class="btn btn-primary cursor-not-allowed" v-else>Il n'y a plus de place disponible</button>
+      </div>
     </div>
   </div>
+
+
+
 </template>
 
 <style scoped>
+#cards {
 
-h1 {
-  text-align: center;
-  font-size: 45px;
 }
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card {
-  cursor:pointer;
-  background-color: white;
-  text-align: center;
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  width: 300px;
-}
-
 
 </style>
