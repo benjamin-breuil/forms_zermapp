@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import {RouterLink, useRouter} from "vue-router";
 
 const router = useRouter();
-const URL = 'https://zermapp.jobtrek.ch/api/get-events';
+const URL = 'http://localhost/api/events-forms';
 
 let events = ref([]);
 

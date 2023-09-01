@@ -8,7 +8,7 @@ const route = useRoute()
 const {id} = route.params
 const event = ref(null)
 
-const URL = 'https://zermapp.jobtrek.ch/api/get-events';
+const URL = 'http://localhost/api/events-forms';
 const coachs = ['Caroline Buff', 'Myriam Rendina', 'Thomas Vadillo', 'Sophie Heim', 'Lionel Arni', 'Lise Puigserver', 'Florent Dreq']
 
 let titre = ref('');
@@ -22,12 +22,10 @@ let heure_fin = ref('');
 let places_disponibles = ref('');
 
 let username = ref('');
-let email = ref('');
+let email = ref('')
 async function logEvents(){
   const response = await fetch(URL);
   const events = await response.json();
-
-
 
   event.value = events.find(c => c.id === parseInt(id))
   titre.value = event.value.title
@@ -49,8 +47,11 @@ onMounted(() => {
   email.value = localStorage.getItem('email')
 });
 
-
-
+async function newRegistereds(){
+  const response = await fetch('http://localhost:3001/get-event');
+  const events = await response.json();
+  console.log(events)
+}
 
 </script>
 
@@ -77,7 +78,7 @@ onMounted(() => {
     </div>
     <div id="forms">
       <button class="buttonif1" v-if="!username">Connexion requise pour s'inscrire.</button>
-      <button class="buttonif"  v-else-if="places_disponibles !== 0">S'inscrire au séminaire</button>
+      <button class="buttonif" @click="newRegistereds()"  v-else-if="places_disponibles !== 0">S'inscrire au séminaire</button>
       <button style="cursor: not-allowed" v-else>Il n'y a plus de place disponible</button>
     </div>
   </div>
