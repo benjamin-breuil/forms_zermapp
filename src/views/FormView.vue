@@ -54,8 +54,25 @@ onMounted(() => {
       <p>{{ description }}</p>
       <p>Lieu : {{ site }}, {{ salle }} 📍 </p>
       <p>Le séminaire est prévu pour le {{ date }} de {{ heure_debut }} à {{ heure_fin }}</p>
-      <p >Nombre de places disponibles : {{ places_disponibles }}  </p>
+      <p> Nombre de places disponibles : {{ places_disponibles }}  </p>
       <h2 class="center"> ⬇️ Cliquez sur le bouton pour vous inscrire ⬇️ </h2>
+    </div>
+    <div id="details">
+      <h1>Sélectionner votre coach</h1>
+      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+      <label for="javascript">Caroline Buff</label>
+      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+      <label for="javascript">Myriam Rendina </label>
+      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+      <label for="javascript">Thomas Vadillo</label>
+      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+      <label for="javascript">Sophie Heim</label>
+      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+      <label for="javascript">Lionel Arni</label>
+      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+      <label for="javascript">Lise Puigserver </label>
+      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+      <label for="javascript">Florent Dreq</label>
     </div>
     <div id="forms">
       <button class="buttonif"  v-if="places_disponibles !== 0">S'inscrire au séminaire</button>
@@ -75,7 +92,7 @@ onMounted(() => {
 #details {
   background-color: white;
   text-align: justify;
-  margin: 50px auto;
+  margin: 20px auto;
   max-width: 1000px;
   padding: 20px;
   border: 1px solid #ccc;
