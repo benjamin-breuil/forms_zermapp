@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button class="btn" @click="signIn()">Se Connecter avec Microsoft</button>
-    <button  class="btn"  @click="signOut()">Se Déconnecter</button>
+    <button  class="btn" v-if="username" @click="signOut()">Se Déconnecter</button>
+    <button class="btn" v-else @click="signIn()">Se Connecter avec Microsoft</button>
     <h1>{{username}}</h1>
     <h1>{{email}}</h1>
 
@@ -16,8 +16,8 @@ import {onMounted, ref} from "vue";
 
 const msalConfig = {
   auth: {
-    clientId: 'VUE_AZURE_CLIENT_ID',
-    authority: "https://login.microsoftonline.com/VUE_AZURE_TENANT_ID",
+    clientId: 'AZURE_CLIENT_ID',
+    authority: "https://login.microsoftonline.com/AZURE_TENANT_ID",
     redirectUri: `http://localhost:5173/`,
   }
 };

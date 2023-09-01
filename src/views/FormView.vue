@@ -2,6 +2,7 @@
 import { ref, onMounted, onBeforeMount } from 'vue';
 import {useRoute} from "vue-router";
 
+
 const route = useRoute()
 
 const {id} = route.params
@@ -37,25 +38,13 @@ async function logEvents(){
   console.log(event.value.id)
 }
 
+
 onMounted(() => {
   logEvents(); //
 });
 
 
-function sendEmail() {
-  Email.send({
-    Host: "smtp.gmail.com",
-    Username: "sender@email_address.com",
-    Password: "Enter your password",
-    To: 'receiver@email_address.com',
-    From: "sender@email_address.com",
-    Subject: "Sending Email using javascript",
-    Body: "Well that was easy!!",
-  })
-      .then(function (message) {
-        alert("mail sent successfully")
-      });
-}
+const email = localStorage.getItem('email')
 
 
 </script>
