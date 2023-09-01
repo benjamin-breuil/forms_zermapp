@@ -34,7 +34,7 @@ onMounted(() => {
         <h2 class="card-title">{{ event.title }}</h2>
         <p>{{ event.description }}</p>
         <div class="card-actions justify-end">
-          <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary" v-if="event.available_place > 1">Il reste {{ event.available_place }} places disponibles</button>
+          <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary " v-if="event.available_place > 1">Il reste {{ event.available_place }} places disponibles</button>
           <button @click="router.push(`/form/${event.id}`)" class="btn btn-primary" v-else-if="event.available_place === 1">Il reste {{ event.available_place }} place disponible</button>
           <button class="btn btn-primary cursor-not-allowed" v-else>Il n'y a plus de place disponible</button>
         </div>

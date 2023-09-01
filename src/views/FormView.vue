@@ -9,6 +9,7 @@ const {id} = route.params
 const event = ref(null)
 
 const URL = 'https://zermapp.jobtrek.ch/api/get-events';
+const coachs = ['Caroline Buff', 'Myriam Rendina', 'Thomas Vadillo', 'Sophie Heim', 'Lionel Arni', 'Lise Puigserver', 'Florent Dreq']
 
 let titre = ref('');
 let orateur = ref('');
@@ -51,7 +52,6 @@ onMounted(() => {
 
 
 
-
 </script>
 
 <template>
@@ -67,20 +67,13 @@ onMounted(() => {
     </div>
     <div id="details">
       <h1>Sélectionner votre coach</h1>
-      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-      <label for="javascript">Caroline Buff</label>
-      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-      <label for="javascript">Myriam Rendina </label>
-      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-      <label for="javascript">Thomas Vadillo</label>
-      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-      <label for="javascript">Sophie Heim</label>
-      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-      <label for="javascript">Lionel Arni</label>
-      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-      <label for="javascript">Lise Puigserver </label>
-      <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-      <label for="javascript">Florent Dreq</label>
+      <div v-for="coach in coachs">
+        <div id="radio_coach">
+          <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+          <label for="javascript">{{coach}}</label>
+        </div>
+      </div>
+
     </div>
     <div id="forms">
       <button class="buttonif1" v-if="!username">Connexion requise pour s'inscrire.</button>
@@ -170,6 +163,14 @@ button:hover {
 h2 {
   font-size: 30px;
 }
+
+#radio_coach {
+  display: flex;
+}
+#radio_coach > label {
+  margin-left: 1vmax;
+}
+
 
 @media only screen and (max-width: 500px) {
   * {
