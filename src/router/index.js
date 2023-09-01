@@ -4,6 +4,7 @@ import ListOfFormsView from "@/views/ListOfFormsView.vue";
 import FormView from "@/views/FormView.vue";
 import Login from "@/views/LoginView.vue";
 import LoginView from "@/views/LoginView.vue";
+import {useUserStore} from "@/stores/UserStore";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
