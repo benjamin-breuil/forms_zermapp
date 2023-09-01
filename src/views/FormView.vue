@@ -83,7 +83,7 @@ onMounted(() => {
       <label for="javascript">Florent Dreq</label>
     </div>
     <div id="forms">
-      <button v-if="!username">Connexion requise pour s'inscrire.</button>
+      <button class="buttonif1" v-if="!username">Connexion requise pour s'inscrire.</button>
       <button class="buttonif"  v-else-if="places_disponibles !== 0">S'inscrire au séminaire</button>
       <button style="cursor: not-allowed" v-else>Il n'y a plus de place disponible</button>
     </div>
@@ -96,6 +96,10 @@ onMounted(() => {
 
 * {
   font-family: 'Oswald', sans-serif;
+}
+
+.buttonif1 {
+  cursor: not-allowed;
 }
 
 #details {

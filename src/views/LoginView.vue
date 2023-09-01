@@ -16,9 +16,10 @@ import {onMounted, ref} from "vue";
 
 const msalConfig = {
   auth: {
-    clientId: 'AZURE_CLIENT_ID',
-    authority: "https://login.microsoftonline.com/AZURE_TENANT_ID",
+    clientId: '864eea7c-7660-43bd-936d-5189878e4f35',
+    authority: "https://login.microsoftonline.com/de084535-12a9-406c-bd84-d4bbcdb1a7b4",
     redirectUri: `http://localhost:5173/`,
+
   }
 };
 
