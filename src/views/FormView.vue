@@ -19,6 +19,9 @@ let date = ref('');
 let heure_debut = ref('');
 let heure_fin = ref('');
 let places_disponibles = ref('');
+
+let username = ref('');
+let email = ref('');
 async function logEvents(){
   const response = await fetch(URL);
   const events = await response.json();
@@ -41,10 +44,12 @@ async function logEvents(){
 
 onMounted(() => {
   logEvents(); //
+  username.value = localStorage.getItem('username')
+  email.value = localStorage.getItem('email')
 });
 
 
-const email = localStorage.getItem('email')
+
 
 
 </script>
@@ -78,7 +83,8 @@ const email = localStorage.getItem('email')
       <label for="javascript">Florent Dreq</label>
     </div>
     <div id="forms">
-      <button class="buttonif"  v-if="places_disponibles !== 0">S'inscrire au séminaire</button>
+      <button v-if="!username">Connexion requise pour s'inscrire.</button>
+      <button class="buttonif"  v-else-if="places_disponibles !== 0">S'inscrire au séminaire</button>
       <button style="cursor: not-allowed" v-else>Il n'y a plus de place disponible</button>
     </div>
   </div>
